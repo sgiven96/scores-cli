@@ -1,6 +1,5 @@
 const request = require('request');
 const moment = require('moment');
-const btoa = require('btoa');
 
 class nba {
 
