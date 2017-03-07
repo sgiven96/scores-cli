@@ -2,7 +2,7 @@
   "name": "scores-cli",
   "version": "1.0.0",
   "description": "Get sports scores from your favorite teams and leagues!",
-  "main": "app.js",
+  "main": "scores.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
