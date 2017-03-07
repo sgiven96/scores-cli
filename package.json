@@ -9,6 +9,8 @@
   "author": "Ben Devore and Sam Given",
   "license": "ISC",
   "dependencies": {
+    "btoa": "^1.1.2",
+    "moment": "^2.17.1",
     "request": "^2.80.0"
   }
 }
