@@ -31,8 +31,8 @@ class nba {
         homeTeam: g.game.homeTeam.Name,
         homeScore: g.homeScore,
         awayScore: g.awayScore,
-        isUnplayed: g.isUnplayed,
-        inProgress: g.isInProgress,
+        isUnplayed: g.isUnplayed == 'true' ? true : false,
+        inProgress: g.isInProgress == 'true' ? true : false,
         time: g.game.time
       };
       games.push(game)
