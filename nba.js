@@ -32,7 +32,8 @@ class nba {
         homeScore: g.homeScore,
         awayScore: g.awayScore,
         isUnplayed: g.isUnplayed,
-        inProgress: g.isInProgress
+        inProgress: g.isInProgress,
+        time: g.game.time
       };
       games.push(game)
     }
