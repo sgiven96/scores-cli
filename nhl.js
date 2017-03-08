@@ -1,15 +1,14 @@
-const request = require('request');
 const moment = require('moment');
+const request = require('request');
 const league = require('./league');
 
-class nba extends league {
-
+class nhl extends league {
   constructor() {
     super();
   }
 
   getScores(team, date, callback) {
-    let url = 'https://www.mysportsfeeds.com/api/feed/pull/nba/2016-2017-regular/scoreboard.json?fordate=';
+    let url = 'https://www.mysportsfeeds.com/api/feed/pull/nhl/2016-2017-regular/scoreboard.json?fordate=';
     if (date)
       url = url.concat(moment(date).format('YYYYMMDD'));
     else
@@ -29,4 +28,4 @@ class nba extends league {
   }
 }
 
-module.exports = nba;
+module.exports = nhl;
