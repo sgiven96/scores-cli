@@ -35,13 +35,13 @@ function printScores(games) {
 program
   .version('1.0.0')
   .description('Get sports scores from your favorite teams and leagues')
-  .option('-l, --league <required>','Scores for a specific league')
-  .option('-t, --team <required>','Score for a specific team')
-  .option('-d, --date <required>','Scores for a specific date')
+  .option('-l, --league <league abbrevation>','Scores for a specific league')
+  .option('-t, --team <team name>','Score for a specific team')
+  .option('-d, --date <date as YYYY-MM-DD>','Scores for a specific date')
   .parse(process.argv);
 
 if (program.league) {
-  League = require('./' + program.league);
+  League = require('./' + program.league.toLowerCase());
 }
 
 var league = new League();

@@ -28,24 +28,32 @@ class league {
 
   getGames(body, team) {
     let games = [];
-    let scoreboard = JSON.parse(body).scoreboard.gameScore;
-    for (var i = 0; i < scoreboard.length; i++) {
-      let g = scoreboard[i];
-      if (team) {
-        if (!this.scanForTeam(team, g.game.awayTeam) && !this.scanForTeam(team, g.game.homeTeam)) {
-          continue;
+    let scoreboard;
+    try {
+      scoreboard = JSON.parse(body).scoreboard.gameScore;
+    } catch (e) {
+      console.log('\nData Fetch Error');
+      return games;
+    }
+    if (scoreboard) {
+      for (var i = 0; i < scoreboard.length; i++) {
+        let g = scoreboard[i];
+        if (team) {
+          if (!this.scanForTeam(team, g.game.awayTeam) && !this.scanForTeam(team, g.game.homeTeam)) {
+            continue;
+          }
         }
+        let game = {
+          awayTeam: g.game.awayTeam.Name,
+          homeTeam: g.game.homeTeam.Name,
+          homeScore: g.homeScore,
+          awayScore: g.awayScore,
+          isUnplayed: g.isUnplayed == 'true' ? true : false,
+          inProgress: g.isInProgress == 'true' ? true : false,
+          time: g.game.time
+        };
+        games.push(game)
       }
-      let game = {
-        awayTeam: g.game.awayTeam.Name,
-        homeTeam: g.game.homeTeam.Name,
-        homeScore: g.homeScore,
-        awayScore: g.awayScore,
-        isUnplayed: g.isUnplayed == 'true' ? true : false,
-        inProgress: g.isInProgress == 'true' ? true : false,
-        time: g.game.time
-      };
-      games.push(game)
     }
     return games;
   }
