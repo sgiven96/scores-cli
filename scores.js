@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const program = require('commander');
 const btoa = require('btoa');
 var League = require('./nba');
@@ -34,7 +36,7 @@ program
   .version('1.0.0')
   .description('Get sports scores from your favorite teams and leagues')
   .option('-l, --league <required>','Scores for a specific league')
-  .option('-t, --team <required>..<required>','Score for a specific team')
+  .option('-t, --team <required>','Score for a specific team')
   .option('-d, --date <required>','Scores for a specific date')
   .parse(process.argv);
 
