@@ -46,7 +46,6 @@ class nba {
       url = url.concat(moment(date).format('YYYYMMDD'));
     else
       url = url.concat(moment().format('YYYYMMDD'));
-    console.log(url);
     let options = {
       url: url,
       headers: {
