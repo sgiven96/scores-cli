@@ -11,6 +11,7 @@ function paddingOfSize(size) {
 }
 
 function printScores(games) {
+  console.log();
   for (var i = 0; i < games.length; i++) {
     console.log(games[i].awayTeam + ' @ ' + games[i].homeTeam);
     if(games[i].isUnplayed) {
@@ -41,5 +42,5 @@ if (program.league) {
   League = require('./' + program.league);
 }
 
-var league = new League(btoa('bdevore:password'));
+var league = new League();
 league.getScores(program.team, program.date, printScores);

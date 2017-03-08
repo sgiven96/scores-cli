@@ -1,9 +1,21 @@
 const request = require('request');
 const moment = require('moment');
+const readlineSync = require('readline-sync');
+const btoa = require('btoa');
+const keytar = require('keytar');
 
 class nba {
 
-  constructor(key) {
+  constructor() {
+    let key = keytar.getPassword('scores-cli', 'nba');
+    if (!key) {
+      let username = readlineSync.question('MySportsFeeds Username: ');
+      let password = readlineSync.question('MySportsFeeds Password: ', {
+        hideEchoBack: true
+      });
+      key = btoa(`${username}:${password}`);
+      keytar.addPassword('scores-cli', 'nba', key);
+    }
     this.key = key;
   }
 

@@ -11,7 +11,9 @@
   "dependencies": {
     "btoa": "^1.1.2",
     "commander": "^2.9.0",
+    "keytar": "^3.0.2",
     "moment": "^2.17.1",
+    "readline-sync": "^1.4.6",
     "request": "^2.80.0"
   }
 }
