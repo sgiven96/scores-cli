@@ -2,21 +2,30 @@ const program = require('commander');
 const btoa = require('btoa');
 var League = require('./nba');
 
+function paddingOfSize(size) {
+  let padding= '';
+  for (var i = 0; i < size; i++) {
+    padding += ' ';
+  }
+  return padding;
+}
+
 function printScores(games) {
   for (var i = 0; i < games.length; i++) {
     console.log(games[i].awayTeam + ' @ ' + games[i].homeTeam);
     if(games[i].isUnplayed) {
-      console.log(games[i].time);
+      console.log(paddingOfSize(games[i].awayTeam.length - 1) + games[i].time);
     }
     else {
-      console.log(games[i].awayScore + ' - ' + games[i].homeScore);
+      console.log(paddingOfSize(games[i].awayTeam.length - 3) + games[i].awayScore + ' - ' + games[i].homeScore);
     }
-    if(games[i].isInProgress) {
-      console.log('In Progress');
+    if(games[i].inProgress) {
+      console.log(paddingOfSize(games[i].awayTeam.length - 6) + 'In Progress');
     }
     else if(!games[i].isUnplayed){
-      console.log('Final');
+      console.log(paddingOfSize(games[i].awayTeam.length - 1) + 'Final');
     }
+    console.log();
   }
 }
 
