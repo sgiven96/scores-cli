@@ -6,11 +6,14 @@ class league {
 
   constructor() {
     let key = keytar.getPassword('scores-cli', 'MySportsFeeds');
+    let username, password;
     if (!key) {
-      let username = readlineSync.question('MySportsFeeds Username: ');
-      let password = readlineSync.question('MySportsFeeds Password: ', {
-        hideEchoBack: true
-      });
+      if (!(username = process.env.USERNAME) || !(password = process.env.PASSWORD)) {
+        username = readlineSync.question('MySportsFeeds Username: ');
+        password = readlineSync.question('MySportsFeeds Password: ', {
+          hideEchoBack: true
+        });
+      }
       key = btoa(`${username}:${password}`);
       keytar.addPassword('scores-cli', 'MySportsFeeds', key);
     }
