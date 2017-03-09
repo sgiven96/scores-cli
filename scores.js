@@ -5,7 +5,7 @@ const btoa = require('btoa');
 var League = require('./nba');
 
 function paddingOfSize(size) {
-  let padding= '';
+  let padding = '';
   for (var i = 0; i < size; i++) {
     padding += ' ';
   }
@@ -16,16 +16,14 @@ function printScores(games) {
   console.log();
   for (var i = 0; i < games.length; i++) {
     console.log(games[i].awayTeam + ' @ ' + games[i].homeTeam);
-    if(games[i].isUnplayed) {
+    if (games[i].isUnplayed) {
       console.log(paddingOfSize(games[i].awayTeam.length - 1) + games[i].time);
-    }
-    else {
+    } else {
       console.log(paddingOfSize(games[i].awayTeam.length - 3) + games[i].awayScore + ' - ' + games[i].homeScore);
     }
-    if(games[i].inProgress) {
+    if (games[i].inProgress) {
       console.log(paddingOfSize(games[i].awayTeam.length - 6) + 'In Progress');
-    }
-    else if(!games[i].isUnplayed){
+    } else if (!games[i].isUnplayed) {
       console.log(paddingOfSize(games[i].awayTeam.length - 1) + 'Final');
     }
     console.log();
@@ -33,15 +31,20 @@ function printScores(games) {
 }
 
 program
-  .version('1.0.0')
+  .version('1.0.1')
   .description('Get sports scores from your favorite teams and leagues')
-  .option('-l, --league <league abbrevation>','Scores for a specific league')
-  .option('-t, --team <team name>','Score for a specific team')
-  .option('-d, --date <date as YYYY-MM-DD>','Scores for a specific date')
+  .option('-l, --league <league abbrevation>', 'Scores for a specific league (default is nba)')
+  .option('-t, --team <team name>', 'Scores for a specific team')
+  .option('-d, --date <date as YYYY-MM-DD>', 'Scores for a specific date (default is today)')
   .parse(process.argv);
 
 if (program.league) {
-  League = require('./' + program.league.toLowerCase());
+  try {
+    League = require('./' + program.league.toLowerCase());
+  } catch (e) {
+    console.log('\nleague doesn\'t exist or is not supported yet\n');
+    process.exit(1);
+  }
 }
 
 var league = new League();
