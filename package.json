@@ -1,6 +1,6 @@
 {
   "name": "scores-cli",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Get sports scores from your favorite teams and leagues!",
   "main": "scores.js",
   "scripts": {
