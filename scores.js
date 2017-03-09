@@ -31,7 +31,7 @@ function printScores(games) {
 }
 
 program
-  .version('1.0.1')
+  .version('1.0.2')
   .description('Get sports scores from your favorite teams and leagues')
   .option('-l, --league <league abbrevation>', 'Scores for a specific league (default is nba)')
   .option('-t, --team <team name>', 'Scores for a specific team')
