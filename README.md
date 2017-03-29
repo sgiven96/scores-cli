@@ -1,7 +1,7 @@
 # scores-cli
 Get sports scores from your favorite teams and leagues!
 
-##Installation
+## Installation
 
 To install `scores` command line program, run:
 
